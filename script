@@ -1,0 +1,8 @@
+echo "rsync:" # transfer over data
+rsync -azhv --delete -e "ssh -i $SSHKEY" "$SOURCE" "$DEST_SERVER":"$DESTINATION"/current/
+
+echo "tar:" # compress data and put it into the incremental folder
+ssh "$DEST_SERVER" rm "$DESTINATION"/incremental/$(date +%Y-%m-%d).tar.gz # make sure to restart tar in case of mid backup reboot
+ssh "$DEST_SERVER" tar -czf "$DESTINATION"/incremental/$(date +%Y-%m-%d).tar.gz "$DESTINATION"/current/*
+
+notify-send "Backup finished" "Your rsync backup has finished, no log files on this one so check the terminal."
