@@ -1,0 +1,5 @@
+// just a small description of each variable so i never have to truly read my code again.
+SOURCE: what dirs you want to backup, e.g "/home/user"
+DESTINATION: what dir on the server you want the backup to be in e.g "/backups"
+DEST_SERVER: ip address and username of the server for the backup to be on e.g "user@192.168.2.10"
+SSHKEY: file where the private ssh key is held e.g "~/.ssh/id_ed89214"
